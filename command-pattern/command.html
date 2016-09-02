@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var Cursor = require('./Cursor');
+    var UndoDecorator = require('./UndoDecorator');
+    var MoveUp = require('./MoveUp');
+    var MoveDown = require('./MoveDown');
+    var MoveLeft = require('./MoveLeft');
+    var MoveRight = require('./MoveRight');
+    var UndoButton = require('./UndoButton');
+
+    var body = document.getElementsByTagName('body')[0];
+    var cursor = new Cursor(400, 400, body);
+
+    var undoStack = [];
+
+    var upCommand = new UndoDecorator(new MoveUp(cursor), undoStack);
+    var downCommand = new UndoDecorator(new MoveDown(cursor), undoStack);
+    var leftCommand = new UndoDecorator(new MoveLeft(cursor), undoStack);
+    var rightCommand = new UndoDecorator(new MoveRight(cursor), undoStack);
+    var undoCommand = new UndoButton('Undo', body, undoStack);
+</script>
+</body>
+</html>
