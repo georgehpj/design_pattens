@@ -11,4 +11,4 @@ module.exports = class Publisher {
         );
         return this;
     }
-}
+};
